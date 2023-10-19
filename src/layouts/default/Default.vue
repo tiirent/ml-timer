@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="black-background">
     <!-- <default-bar /> -->
     <app-bar @add-group="addGroup" />
     <timer-group v-for="(group, index) in groups" :key=group.id :index="index" :name=group.name :input="input"
@@ -64,3 +64,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.black-background {
+  background-color: black;
+  color: white;
+}
+</style>

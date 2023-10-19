@@ -1,11 +1,21 @@
 <template>
     <v-container>
-        {{ name }}
-        <timer-module-options @add-timer="addTimer" @delete-timer-group="deleteTimerGroup"/>
-        <timer-item v-for="(timer, index) in timers" :key="timer.id" :index="index" :name="timer.name"
+        <v-row class="purple-bg">
+            <v-col align="left">
+                <div pa-5>
+                    {{ name }}
+                </div>
+            </v-col>
+            <v-col align="right">
+                <timer-module-options @add-timer="addTimer" @delete-timer-group="deleteTimerGroup"/>
+            </v-col>
+        </v-row>
+        <v-row>
+            <timer-item v-for="(timer, index) in timers" :key="timer.id" :index="index" :name="timer.name"
             :hotkey="timer.hotkey" :input="input" :duration="duration"
             @delete-timer="deleteTimer" @update-name="updateName($event, index)"
             @update-hotkey="updateHotkey($event, index)" />
+        </v-row>
     </v-container>
 </template>
 
@@ -68,4 +78,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.purple-bg {
+    background-color: #6567A6;
+}
+
+</style>

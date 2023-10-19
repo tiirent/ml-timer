@@ -1,8 +1,8 @@
 <template>
     <v-container>
-        <v-btn @click="add">Add</v-btn>
-        <v-btn @click="edit">Edit</v-btn>
-        <v-btn @click="$emit('deleteTimerGroup')">Delete</v-btn>
+        <v-btn color="#6567A6" @click="add">Add</v-btn>
+        <!-- <v-btn color="#6567A6" @click="edit">Edit</v-btn> -->
+        <v-btn color="#6567A6" @click="$emit('deleteTimerGroup')">Delete</v-btn>
     </v-container>
 </template>
 

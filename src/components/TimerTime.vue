@@ -1,6 +1,6 @@
 <template>
     <v-container align="end">
-        <v-btn @click="startTimer" :disabled="running">{{ formatTime(value) }}</v-btn>
+        <v-btn color="black" @click="startTimer" :disabled="running">{{ formatTime(value) }}</v-btn>
     </v-container>
 </template>
 

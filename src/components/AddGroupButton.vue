@@ -1,22 +1,22 @@
 <template>
     <v-row justify="end" >
-        <v-dialog v-model="dialog" persistent width="1024">
+        <v-dialog v-model="dialog" persistent width="500">
             <template v-slot:activator="{ props }">
-                <v-btn color="primary" v-bind="props">
+                <v-btn class="add-btn" color="black" v-bind="props">
                     Add Group
                 </v-btn>
             </template>
-            <v-card>
+            <v-card color="black">
                 <v-card-title>
                     <span class="text-h5">Add Group</span>
                 </v-card-title>
                 <v-card-text>
                     <v-container>
                         <v-row>
-                            <v-col cols="12" sm="6" md="4">
+                            <v-col cols="7">
                                 <v-text-field required label="Name" v-model="name"></v-text-field>
                             </v-col>
-                            <v-col cols="12" sm="6" md="4">
+                            <v-col cols="5">
                                 <time-input-field @time-value="duration = $event"/>
                             </v-col>
                         </v-row>
@@ -56,3 +56,9 @@ export default {
     }),
 }
 </script>
+
+<style scoped>
+.add-btn {
+    margin: 8px;
+}
+</style>
