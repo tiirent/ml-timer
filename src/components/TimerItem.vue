@@ -44,11 +44,12 @@ export default {
             type: Object as PropType<{ id: string; key: string }>, // Define the object type
         },
         duration: Number,
+        initEditing: Boolean,
     },
     data() {
         return {
             running: false,
-            editing: true,
+            editing: this.initEditing,
         };
     },
     methods: {
@@ -59,6 +60,7 @@ export default {
         editTimer(status: boolean): void {
             this.editing = status
             console.log("editing", status)
+            this.$emit("timerEditing", this.index, status)
         },
         deleteTimer(): void {
             console.log("deleting timer", this.name, this.index, this.hotkey)

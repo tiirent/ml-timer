@@ -11,10 +11,12 @@
             </v-col>
         </v-row>
         <v-row>
-            <timer-item v-for="(timer, index) in timers" :key="timer.id" :index="index" :name="timer.name"
+            <timer-item v-for="(timer, index) in timers" :key="timer.id" :index="index" 
+            :name="timer.name"
             :hotkey="timer.hotkey" :input="input" :duration="duration"
+            :init-editing="timer.editing"
             @delete-timer="deleteTimer" @update-name="updateName($event, index)"
-            @update-hotkey="updateHotkey($event, index)" />
+            @update-hotkey="updateHotkey($event, index)" @timer-editing="editTimer" />
         </v-row>
     </v-container>
 </template>
@@ -36,10 +38,11 @@ export default {
             type: Object as PropType<{ id: string; key: string }>, // Define the object type
         },
         duration: Number,
+        timers: [] as any[]
     },
     data() {
         return {
-            timers: [] as any[]
+            timers: this.timers
         };
     },
     methods: {
@@ -47,7 +50,8 @@ export default {
             this.timers.push({
                 id: uuidv4(),
                 name: "",
-                hotkey: ""
+                hotkey: "",
+                editing: true
             })
             this.doOnUpdate()
         },
@@ -71,6 +75,10 @@ export default {
         },
         doOnUpdate() {
             this.$emit("timers", this.index, this.timers)
+        },
+        editTimer(index: number, status: boolean) {
+            this.timers.at(index).editing = status
+            this.doOnUpdate()
         }
     },
     watch: {

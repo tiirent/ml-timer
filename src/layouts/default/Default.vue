@@ -4,6 +4,7 @@
     <app-bar :groups="groups" @add-group="addGroup" @import-groups="importGroups" />
     <timer-group v-for="(group, index) in groups" :key=group.id :index="index" :name=group.name :input="input"
       :duration=group.duration
+      :timers=group.timers
       @delete-timer-group="deleteGroup"
       @timers="updateTimers"/>
   </v-app>
