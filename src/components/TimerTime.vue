@@ -1,6 +1,6 @@
 <template>
     <v-container align="end">
-        <v-btn class="timer" color="black" @click="startTimer" :disabled="running">{{ formatTime(value) }}</v-btn>
+        <v-btn class="timer" color="black" @click="startTimer" >{{ formatTime(value) }}</v-btn>
     </v-container>
 </template>
 
@@ -21,7 +21,9 @@ export default {
     },
     methods: {
         startTimer() {
-            this.$emit("timerRunning", true)
+            if (!this.running) {
+                this.$emit("timerRunning", true)
+            }
         },
         stopTimer() {
             if (this.intervalId) {

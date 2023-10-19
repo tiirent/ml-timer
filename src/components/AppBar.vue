@@ -2,9 +2,9 @@
     <v-container justify="end" fluid>
         <v-row>
             <v-col>
+                <add-group-button @add-group="$emit('addGroup', $event)"/>
                 <import-button @import-groups="$emit('importGroups', $event)"/>
                 <export-button :groups="groups"/>
-                <add-group-button @add-group="$emit('addGroup', $event)"/>
             </v-col>
         </v-row>
     </v-container>
