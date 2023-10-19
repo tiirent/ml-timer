@@ -47,6 +47,11 @@ export default {
     },
     mounted() {
     },
+    unmounted() {
+        if (this.intervalId) {
+            clearInterval(this.intervalId);
+        }
+    },
     watch: {
         running: function (newVal) {
             console.log("time run", newVal)
