@@ -1,6 +1,8 @@
 <template>
     <v-container>
-        <div v-if="!editing" :style="computedStyle">{{ hotkey }}</div>
+        <div v-if="!editing" :style="computedStyle">
+            {{ hotkey }}
+        </div>
         <v-text-field label="Hotkey" required v-if="editing" v-model="hotkey" hide-details="auto" @update:model-value="formatDisplay" @keydown.enter="$emit('editTimer', false)" ></v-text-field>
     </v-container>
 </template>
@@ -25,6 +27,7 @@ export default {
                 backgroundColor: this.backgroundColor,
                 height: '24px',
                 width: '24px',
+                textAlign: 'center',
             };
         },
     },

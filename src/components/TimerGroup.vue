@@ -1,8 +1,8 @@
 <template>
     <v-container>
-        <v-row class="purple-bg">
+        <v-row class="purple-bg" align="center">
             <v-col align="left">
-                <div pa-5>
+                <div class="group-name">
                     {{ name }}
                 </div>
             </v-col>
@@ -83,4 +83,7 @@ export default {
     background-color: #6567A6;
 }
 
+.group-name {
+    padding-left: 20px;
+}
 </style>

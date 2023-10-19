@@ -1,6 +1,6 @@
 <template>
     <v-container align="end">
-        <v-btn color="black" @click="startTimer" :disabled="running">{{ formatTime(value) }}</v-btn>
+        <v-btn class="timer" color="black" @click="startTimer" :disabled="running">{{ formatTime(value) }}</v-btn>
     </v-container>
 </template>
 
@@ -72,4 +72,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.timer {
+    /* pointer-events: none; */
+}
+</style>
