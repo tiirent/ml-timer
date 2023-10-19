@@ -69,7 +69,13 @@ export default {
         input: function (newVal) {
             console.log("item input", newVal)
             if (this.hotkey === newVal.key) {
-                console.log("triggered", this.hotkey)
+                console.log("triggered caps", this.hotkey)
+                if (this.running) {
+                    this.running = false;
+                    (this.$refs.timer as typeof TimerTime).clearTime()
+                }
+            } else if (this.hotkey === newVal.key.toUpperCase()) {
+                console.log("triggered lowercase", this.hotkey)
                 if (!this.running) {
                     this.running = true
                 } else {

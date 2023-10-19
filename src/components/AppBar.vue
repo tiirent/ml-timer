@@ -1,15 +1,26 @@
 <template>
     <v-container justify="end" fluid>
-        <add-group-button @add-group="$emit('addGroup', $event)"/>
+        <v-row>
+            <v-col>
+                <import-button @import-groups="$emit('importGroups', $event)"/>
+                <export-button :groups="groups"/>
+                <add-group-button @add-group="$emit('addGroup', $event)"/>
+            </v-col>
+        </v-row>
     </v-container>
 </template>
 
 <script lang="ts">
 import AddGroupButton from '@/components/AddGroupButton.vue'
+import ExportButton from '@/components/ExportButton.vue'
+import ImportButton from '@/components/ImportButton.vue'
 
 export default {
     components: {
-        AddGroupButton,
+        AddGroupButton, ExportButton, ImportButton
+    },
+    props: {
+        groups: [] as any[]
     },
     methods: {
         add() {

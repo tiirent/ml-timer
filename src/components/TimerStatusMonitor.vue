@@ -27,6 +27,7 @@ export default {
                 backgroundColor: this.backgroundColor,
                 height: '24px',
                 width: '24px',
+                textAlign: 'center'
             };
         },
     },
@@ -64,4 +65,5 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

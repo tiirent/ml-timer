@@ -38,6 +38,9 @@ export default {
             console.log("value, duration", this.value, this.duration)
             this.value = this.duration ?? 0
         },
+        clearTime() {
+            this.value = 0
+        },
         minusTime(seconds: number) {
             this.value--;
             if (this.value <= 0) {

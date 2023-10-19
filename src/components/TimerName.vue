@@ -3,7 +3,10 @@
         <div v-if="!editing">
             {{ name }}
         </div>
-        <v-text-field label="Name" required v-if="editing" v-model="name" hide-details="auto" @keydown.enter="$emit('editTimer', false)" ></v-text-field>
+        <v-text-field label="Name" required 
+        v-if="editing" v-model="name" 
+        hide-details="auto" 
+        @keydown.enter="$emit('editTimer', false)" ></v-text-field>
     </v-container>
 </template>
 

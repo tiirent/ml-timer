@@ -1,10 +1,11 @@
 <template>
   <v-app class="black-background">
     <!-- <default-bar /> -->
-    <app-bar @add-group="addGroup" />
+    <app-bar :groups="groups" @add-group="addGroup" @import-groups="importGroups" />
     <timer-group v-for="(group, index) in groups" :key=group.id :index="index" :name=group.name :input="input"
       :duration=group.duration
-      @delete-timer-group="deleteGroup" />
+      @delete-timer-group="deleteGroup"
+      @timers="updateTimers"/>
   </v-app>
 </template>
 
@@ -31,7 +32,7 @@ export default {
   },
   methods: {
     doCommand(e: { keyCode: number; }): void {
-      let cmd = String.fromCharCode(e.keyCode).toUpperCase();
+      let cmd = String.fromCharCode(e.keyCode);
       console.log("pressed", cmd)
       this.input = {
         id: uuidv4(),
@@ -55,12 +56,21 @@ export default {
       this.groups.push({
         id: uuidv4(),
         name: group.name,
-        duration: this.durationStringToDuration(group.duration)
+        duration: this.durationStringToDuration(group.duration),
+        timers: []
       })
     },
     deleteGroup(index: number) {
       this.groups.splice(index, 1)
     },
+    updateTimers(index: number, timers: { id: string, name: string, hotkey: string }[]) {
+      this.groups.at(index).timers = timers
+      console.log(JSON.stringify(this.groups))
+    },
+    importGroups(val: string) {
+      console.log("default", val)
+      this.groups = JSON.parse(val)
+    }
   },
 };
 </script>

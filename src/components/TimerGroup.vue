@@ -49,6 +49,7 @@ export default {
                 name: "",
                 hotkey: ""
             })
+            this.doOnUpdate()
         },
         deleteTimerGroup() {
             this.$emit("deleteTimerGroup", this.index)
@@ -56,16 +57,21 @@ export default {
         deleteTimer(index: number): void {
             console.log("deleting timer", index)
             this.timers.splice(index, 1)
+            this.doOnUpdate()
         },
         updateName(name: string, index: number): void {
             console.log("update name", name, index)
             this.timers[index].name = name
+            this.doOnUpdate()
         },
         updateHotkey(hotkey: string, index: number): void {
-
             console.log("update hotkey", hotkey, index)
             this.timers[index].hotkey = hotkey
+            this.doOnUpdate()
         },
+        doOnUpdate() {
+            this.$emit("timers", this.index, this.timers)
+        }
     },
     watch: {
         input: function (newVal) {
