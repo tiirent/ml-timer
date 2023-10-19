@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <div v-if="!editing" :style="computedStyle">
+        <div v-if="!editing" :style="computedStyle" class="center-text">
             {{ hotkey }}
         </div>
         <v-text-field label="Hotkey" required v-if="editing" v-model="hotkey" hide-details="auto" @update:model-value="formatDisplay" @keydown.enter="$emit('editTimer', false)" ></v-text-field>
@@ -27,7 +27,6 @@ export default {
                 backgroundColor: this.backgroundColor,
                 height: '24px',
                 width: '24px',
-                textAlign: 'center'
             };
         },
     },
@@ -66,4 +65,8 @@ export default {
 </script>
 
 <style scoped>
+.center-text {
+  text-align: center; /* Center-align the text */
+  /* Other styles for the div */
+}
 </style>
