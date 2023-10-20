@@ -1,7 +1,7 @@
 <template>
-    <v-container class="bg" style="min-width: 320px">
+    <v-container class="bg py-0" style="min-width: 320px">
         <v-row no-gutters class="flex-nowrap">
-            <v-col>
+            <v-col cols=1>
                 <span>
                     <timer-status-monitor :running="running" :display="hotkey" :editing="editing" @update-hotkey="$emit('updateHotkey', $event)" @edit-timer="editTimer" />
                 </span>

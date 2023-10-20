@@ -1,16 +1,23 @@
 <template>
-    <v-container>
-        <v-row class="purple-bg" align="center">
+    <v-container
+      class="purple-border pa-3"
+      :style="containerStyle"
+    >
+        <v-row
+            class="purple-bg"
+            align="center"
+            style="padding-top: 2px; padding-bottom: 2px;"
+        >
             <v-col align="left">
                 <div class="group-name">
                     {{ name }}
                 </div>
             </v-col>
-            <v-col align="right">
+            <v-col align="right" class="pa-0">
                 <timer-module-options @add-timer="addTimer" @delete-timer-group="deleteTimerGroup"/>
             </v-col>
         </v-row>
-        <v-row>
+        <v-row v-if="timers.length">
             <timer-item v-for="(timer, index) in timers" :key="timer.id" :index="index" 
             :name="timer.name"
             :hotkey="timer.hotkey" :input="input" :duration="duration"
@@ -44,6 +51,11 @@ export default {
         return {
             timers: this.timers
         };
+    },
+    computed: {
+      containerStyle() {
+        return this.timers.length ? '' : 'border-bottom: 0px';
+      },
     },
     methods: {
         addTimer() {
@@ -95,6 +107,13 @@ export default {
 <style scoped>
 .purple-bg {
     background-color: #6567A6;
+}
+
+.purple-border {
+    border-width: 2px;
+    border-style: solid;
+    border-color: #6567A6;
+    box-sizing: border-box;
 }
 
 .group-name {

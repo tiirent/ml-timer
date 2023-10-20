@@ -18,14 +18,15 @@ export default createVuetify({
     themes: {
       light: {
         colors: {
-          primary: '#1867C0',
+          primary: '#B86E63',
           secondary: '#5CBBF6',
         },
       },
       custom: {
         colors: {
           black: '#000000',
-          white: '#FFFFFF'
+          white: '#FFFFFF',
+          primary: '#6567A6',
         }
       }
     },

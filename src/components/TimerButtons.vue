@@ -1,14 +1,31 @@
 <template>
     <v-container align="end">
-        <v-btn color="black" v-if="!editing" @click="editTimer">
-            <v-icon size="small" icon="mdi-dots-vertical" />
+        <v-btn
+            v-if="!editing"
+            color="black"
+            size="small"
+            icon="mdi-dots-vertical"
+            @click="editTimer"
+          >
         </v-btn>
-        <v-btn color="black" v-if="editing" @click="deleteTimer">
-            <v-icon size="small" icon="mdi-delete" />
-        </v-btn>
-        <v-btn color="black" v-if="editing" @click="okTimer">
-            <v-icon size="small" icon="mdi-check" />
-        </v-btn>
+        <span style="white-space: nowrap;">
+            <v-btn
+                v-if="editing"
+                color="black"
+                size="small"
+                icon="mdi-delete"
+                @click="deleteTimer"
+            >
+            </v-btn>
+            <v-btn
+                v-if="editing"
+                color="black"
+                size="small"
+                icon="mdi-check"
+                @click="okTimer"
+            >
+            </v-btn>
+        </span>
     </v-container>
 </template>
 
