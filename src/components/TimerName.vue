@@ -14,7 +14,7 @@
     @keydown.enter="$emit('editTimer', false)"
   >
     <template v-slot:label="labelProps">
-      <span :class="labelProps.isActive.value || hotkey ? 'pt-2 pr-1' : ''">
+      <span :class="labelProps.isActive.value ? 'pt-2 pr-1' : ''">
         Name
       </span>
     </template>

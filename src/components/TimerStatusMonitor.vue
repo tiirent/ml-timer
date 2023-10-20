@@ -47,7 +47,7 @@ export default {
       get() {
         return this.hotkey;
       },
-      set(value) {
+      set(value: string) {
         if (value.length > 1) {
           this.hotkey = value.slice(-1).toUpperCase();
         } else {

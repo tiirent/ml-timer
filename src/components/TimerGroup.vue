@@ -57,7 +57,7 @@ export default {
   },
   data() {
     return {
-      timers: [],
+      timers: [] as any[],
     };
   },
   computed: {
