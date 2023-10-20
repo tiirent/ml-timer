@@ -9,7 +9,7 @@
     <v-text-field
         v-if="editing"
           v-model="hotkeyModel"
-        class="pt-2 ml-2"
+          class="pt-2 ml-2"
         style="width: 44px"
         label="Hotkey"
         density="compact"
