@@ -45,12 +45,6 @@ export default {
     clearTime() {
       this.value = 0;
     },
-    minusTime(seconds: number) {
-      this.value--;
-      if (this.value <= 0) {
-        this.stopTimer();
-      }
-    },
   },
   mounted() {},
   unmounted() {

@@ -41,6 +41,7 @@ import TimerModuleOptions from "@/components/TimerModuleOptions.vue";
 import TimerItem from "@/components/TimerItem.vue";
 import { PropType } from "vue";
 import { v4 as uuidv4 } from "uuid";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   components: {
@@ -48,21 +49,30 @@ export default {
     TimerItem,
   },
   props: {
-    index: Number,
+    id: String,
     name: String,
     input: {
       type: Object as PropType<{ id: string; key: string }>, // Define the object type
     },
     duration: Number,
   },
-  data() {
-    return {
-      timers: [] as any[],
-    };
-  },
   computed: {
     containerStyle() {
       return this.timers.length ? "" : "border-bottom: 0px";
+    },
+    timers: {
+      get() {
+        const idx = this.$store.state.groups.findIndex(
+          (group) => group.id == this.id,
+        );
+        return this.$store.state.groups[idx].timers;
+      },
+      set(newValue) {
+        const idx = this.$store.state.groups.findIndex(
+          (group) => group.id == this.id,
+        );
+        this.$store.state.groups[idx].timers = newValue;
+      },
     },
   },
   methods: {
@@ -78,15 +88,12 @@ export default {
       this.$emit("deleteTimerGroup", this.index);
     },
     deleteTimer(index: number): void {
-      console.log("deleting timer", index);
       this.timers.splice(index, 1);
     },
     updateName(name: string, index: number): void {
-      console.log("update name", name, index);
       this.timers[index].name = name;
     },
     updateHotkey(hotkey: string, index: number): void {
-      console.log("update hotkey", hotkey, index);
       this.timers[index].hotkey = hotkey;
     },
     editTimer(index: number, status: boolean) {

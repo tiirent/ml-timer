@@ -7,9 +7,10 @@
       @import-groups="importGroups"
     />
     <timer-group
-      v-for="(group, index) in groups"
+      v-for="group in groups"
+      :ref="group.id"
       :key="group.id"
-      :index="index"
+      :id="group.id"
       :name="group.name"
       :input="input"
       :duration="group.duration"
@@ -31,7 +32,6 @@ export default {
   data() {
     return {
       input: {} as { id: string; key: string },
-      groups: [] as any[],
     };
   },
   created() {
@@ -40,10 +40,19 @@ export default {
   unmounted() {
     window.removeEventListener("keypress", this.doCommand);
   },
+  computed: {
+    groups: {
+      get() {
+        return this.$store.state.groups;
+      },
+      set(newValue) {
+        this.$store.state.groups = newValue;
+      },
+    },
+  },
   methods: {
     doCommand(e: { keyCode: number }): void {
       let cmd = String.fromCharCode(e.keyCode);
-      console.log("pressed", cmd);
       this.input = {
         id: uuidv4(),
         key: cmd,
@@ -62,11 +71,11 @@ export default {
       return totalSeconds;
     },
     addGroup(group: { name: string; duration: string }) {
-      console.log("adding group", group.name, group.duration);
       this.groups.push({
         id: uuidv4(),
         name: group.name,
         duration: this.durationStringToDuration(group.duration),
+        timers: [],
       });
     },
     deleteGroup(index: number) {
