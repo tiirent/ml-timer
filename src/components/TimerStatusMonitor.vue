@@ -8,7 +8,7 @@
     </div>
     <v-text-field
         v-if="editing"
-        v-model="hotkeyModel"
+          v-model="hotkeyModel"
         class="pt-2 ml-2"
         style="width: 44px"
         label="Hotkey"

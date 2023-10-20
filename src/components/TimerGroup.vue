@@ -20,7 +20,7 @@
         <v-row v-if="timers.length">
             <timer-item v-for="(timer, index) in timers" :key="timer.id" :index="index" 
             :name="timer.name"
-            :hotkey="timer.hotkey" :input="input" :duration="duration"
+              :hotkey="timer.hotkey" :input="input" :duration="duration"
             :init-editing="timer.editing"
             @delete-timer="deleteTimer" @update-name="updateName($event, index)"
             @update-hotkey="updateHotkey($event, index)" @timer-editing="editTimer" />

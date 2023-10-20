@@ -7,17 +7,18 @@
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "eslint . --fix --ignore-path .gitignore",
-    "lint-staged": {
-      "src/**/*.{js,vue}": [
-        "eslint --fix",
-        "git add",
-      ],
-    },
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,vue}": [
+      "npm run lint",
+      "git add"
+    ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-    },
+      "pre-commit": "lint-staged"
+    }
   },
   "dependencies": {
     "@mdi/font": "7.0.96",

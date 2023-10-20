@@ -6,7 +6,7 @@
           >
             <template v-slot:activator="{ props }">
               <v-btn
-                color="primary"
+                  color="primary"
                 v-bind="props"
                 flat
               >
