@@ -1,54 +1,51 @@
 <template>
-    <v-container align="end">
-        <v-btn color="black" v-if="!editing" @click="editTimer">
-            <v-icon size="small" icon="mdi-dots-vertical" />
-        </v-btn>
-        <v-btn color="black" v-if="editing" @click="deleteTimer">
-            <v-icon size="small" icon="mdi-delete" />
-        </v-btn>
-        <v-btn color="black" v-if="editing" @click="okTimer">
-            <v-icon size="small" icon="mdi-check" />
-        </v-btn>
-    </v-container>
+  <v-container align="end">
+    <v-btn
+      v-if="!editing"
+      color="black"
+      size="small"
+      icon="mdi-dots-vertical"
+      @click="editTimer"
+    >
+    </v-btn>
+    <span style="white-space: nowrap">
+      <v-btn
+        v-if="editing"
+        color="black"
+        size="small"
+        icon="mdi-delete"
+        @click="deleteTimer"
+      >
+      </v-btn>
+      <v-btn
+        v-if="editing"
+        color="black"
+        size="small"
+        icon="mdi-check"
+        @click="okTimer"
+      >
+      </v-btn>
+    </span>
+  </v-container>
 </template>
 
 <script lang="ts">
 export default {
-    props: {
-        editing: Boolean,
-        running: Boolean,
+  props: {
+    editing: Boolean,
+    running: Boolean,
+  },
+  methods: {
+    editTimer() {
+      this.$emit("editTimer", true);
     },
-    data() {
-        return {
-            running: this.running,
-            editing: this.editing,
-        };
+    deleteTimer() {
+      this.$emit("deleteTimer");
     },
-    methods: {
-        editTimer() {
-            this.$emit("editTimer", true)
-        },
-        deleteTimer() {
-            this.$emit("deleteTimer")
-        },
-        okTimer() {
-            this.$emit("editTimer", false)
-        }
+    okTimer() {
+      this.$emit("editTimer", false);
     },
-    mounted() {
-    },
-    watch: {
-        editing: function (newVal) {
-            console.log("button editing", newVal)
-            this.editing = newVal
-        },
-        running: function (newVal) {
-            console.log("button running", newVal)
-            if (newVal === true) {
-
-            }
-        },
-    },
+  },
 };
 </script>
 
