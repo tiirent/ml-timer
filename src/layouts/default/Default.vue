@@ -28,7 +28,7 @@ export default {
   created() {
     window.addEventListener('keypress', this.doCommand);
   },
-  destroyed() {
+  unmounted() {
     window.removeEventListener('keypress', this.doCommand);
   },
   methods: {
