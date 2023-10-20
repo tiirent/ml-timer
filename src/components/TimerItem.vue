@@ -80,21 +80,17 @@ export default {
   methods: {
     toggleStatus(status: boolean): void {
       this.running = status;
-      console.log("toggling status", status);
     },
     editTimer(status: boolean): void {
       this.editing = status;
-      console.log("editing", status);
       this.$emit("timerEditing", this.index, status);
     },
     deleteTimer(): void {
-      console.log("deleting timer", this.name, this.index, this.hotkey);
       this.$emit("deleteTimer", this.index);
     },
   },
   watch: {
     input: function (newVal) {
-      console.log("item input", newVal);
       if (this.hotkey === newVal.key) {
         console.log("triggered caps", this.hotkey);
         if (this.running) {
@@ -102,7 +98,6 @@ export default {
           (this.$refs.timer as typeof TimerTime).clearTime();
         }
       } else if (this.hotkey === newVal.key.toUpperCase()) {
-        console.log("triggered lowercase", this.hotkey);
         if (!this.running) {
           this.running = true;
         } else {
