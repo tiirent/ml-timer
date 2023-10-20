@@ -35,12 +35,6 @@ export default {
         editing: Boolean,
         running: Boolean,
     },
-    data() {
-        return {
-            running: this.running,
-            editing: this.editing,
-        };
-    },
     methods: {
         editTimer() {
             this.$emit("editTimer", true)
@@ -51,20 +45,6 @@ export default {
         okTimer() {
             this.$emit("editTimer", false)
         }
-    },
-    mounted() {
-    },
-    watch: {
-        editing: function (newVal) {
-            console.log("button editing", newVal)
-            this.editing = newVal
-        },
-        running: function (newVal) {
-            console.log("button running", newVal)
-            if (newVal === true) {
-
-            }
-        },
     },
 };
 </script>

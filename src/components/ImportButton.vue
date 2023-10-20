@@ -16,7 +16,7 @@
                             <v-text-field label="Input" required 
                             v-model="value" 
                             hide-details="auto" 
-                            @keydown.enter="" />
+                            />
                         </v-row>
                     </v-container>
                 </v-card-text>

@@ -13,7 +13,6 @@ export default {
     },
     data() {
         return {
-            running: this.running,
             value: 0,
             intervalId: null as unknown as ReturnType<typeof setInterval>,
             hotkey: this.hotkey
@@ -60,8 +59,7 @@ export default {
     watch: {
         running: function (newVal) {
             console.log("time run", newVal)
-            this.running = newVal
-            if (this.running === true) {
+            if (newVal === true) {
                 this.intervalId = setInterval(() => {
                     this.value--;
                     if (this.value <= 0) {

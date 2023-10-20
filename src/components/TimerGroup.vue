@@ -45,11 +45,10 @@ export default {
             type: Object as PropType<{ id: string; key: string }>, // Define the object type
         },
         duration: Number,
-        timers: [] as any[]
     },
     data() {
         return {
-            timers: this.timers
+            timers: [],
         };
     },
     computed: {
@@ -65,7 +64,6 @@ export default {
                 hotkey: "",
                 editing: true
             })
-            this.doOnUpdate()
         },
         deleteTimerGroup() {
             this.$emit("deleteTimerGroup", this.index)
@@ -73,33 +71,18 @@ export default {
         deleteTimer(index: number): void {
             console.log("deleting timer", index)
             this.timers.splice(index, 1)
-            this.doOnUpdate()
         },
         updateName(name: string, index: number): void {
             console.log("update name", name, index)
             this.timers[index].name = name
-            this.doOnUpdate()
         },
         updateHotkey(hotkey: string, index: number): void {
             console.log("update hotkey", hotkey, index)
             this.timers[index].hotkey = hotkey
-            this.doOnUpdate()
-        },
-        doOnUpdate() {
-            this.$emit("timers", this.index, this.timers)
         },
         editTimer(index: number, status: boolean) {
             this.timers.at(index).editing = status
-            this.doOnUpdate()
         }
-    },
-    watch: {
-        input: function (newVal) {
-            console.log("module input", newVal)
-        }
-    },
-    mounted() {
-
     },
 };
 </script>

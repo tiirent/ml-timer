@@ -4,9 +4,8 @@
     <app-bar :groups="groups" @add-group="addGroup" @import-groups="importGroups" />
     <timer-group v-for="(group, index) in groups" :key=group.id :index="index" :name=group.name :input="input"
       :duration=group.duration
-      :timers=group.timers
       @delete-timer-group="deleteGroup"
-      @timers="updateTimers"/>
+    />
   </v-app>
 </template>
 
@@ -58,18 +57,12 @@ export default {
         id: uuidv4(),
         name: group.name,
         duration: this.durationStringToDuration(group.duration),
-        timers: []
       })
     },
     deleteGroup(index: number) {
       this.groups.splice(index, 1)
     },
-    updateTimers(index: number, timers: { id: string, name: string, hotkey: string }[]) {
-      this.groups.at(index).timers = timers
-      console.log(JSON.stringify(this.groups))
-    },
     importGroups(val: string) {
-      console.log("default", val)
       this.groups = JSON.parse(val)
     }
   },
